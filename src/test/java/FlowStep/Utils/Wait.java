@@ -12,9 +12,9 @@ public class Wait {
     public static void waitUntilElementDisplay(MobileElement element, int timeOut) {
         for (int i = 0; i < timeOut; i++) {
             try {
-                if (element.isDisplayed() && element.isEnabled()){
-                    Thread.sleep(1000);
-                }
+                if (element.isDisplayed() && element.isEnabled())
+                    break;
+                Thread.sleep(1000);
             } catch (Exception ex) {
                 Log.info(ex.getMessage());
             }
