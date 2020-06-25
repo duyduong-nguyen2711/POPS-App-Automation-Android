@@ -2,9 +2,12 @@ package FlowStep.Pages;
 
 import Common.Config.DriverContext;
 import Common.Utils.Log;
+import FlowStep.Utils.Wait;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
@@ -33,17 +36,21 @@ public class BasePage {
     }
 
     public void click(MobileElement element) {
+        Wait.waitUntilElementToBeClickable(element);
         element.click();
     }
 
-    public void scrollToElementContainsTextAndClick(String text) {
-        try {
-            driver.findElementByAndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector()" +
-                            ".textContains(\"" + text + "\").instance(0))").click();
+    public void scrollToElementContainsTextAndClick(int xOffset, int yOffset) {
+        TouchAction t = new TouchAction(DriverContext.getDriver());
+        t.tap(PointOption.point(xOffset, yOffset)).perform();
+    }
 
-        } catch (Exception ex){
-            Log.warn(ex.getMessage());
+    public boolean isButtonEnabledToClick(MobileElement button){
+        try {
+            return button.isEnabled();
+        } catch (Throwable e){
+            return false;
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package FlowStep.Pages.NavigationBar;
 
+import Common.Config.Settings;
 import FlowStep.Pages.Account.AccountPage;
 import FlowStep.Pages.BasePage;
 import FlowStep.Pages.Comics.ComicsPage;
@@ -39,27 +40,27 @@ public class Navigation extends BasePage {
         switch (pageName){
             case "Home":
                 click(home_btn);
-                Wait.waitUntilElementDisplay(HomePage.getInstance().home_lbl, 5);
+                Wait.waitUntilElementDisplay(HomePage.getInstance().home_lbl, Settings.SHORT_TIMEOUT_SECOND);
 
             case "Comisc":
                 click(comics_btn);
-                Wait.waitUntilElementDisplay(ComicsPage.getInstance().comics_lbl, 5);
+                Wait.waitUntilElementDisplay(ComicsPage.getInstance().comics_lbl, Settings.SHORT_TIMEOUT_SECOND);
 
             case "Music":
                 click(music_btn);
-                Wait.waitUntilElementDisplay(MusicPage.getInstance().music_lbl, 5);
+                Wait.waitUntilElementDisplay(MusicPage.getInstance().music_lbl, Settings.SHORT_TIMEOUT_SECOND);
 
             case "Kids":
                 click(kids_btn);
-                Wait.waitUntilElementDisplay(KidsPage.getInstance().kids_lbl, 5);
+                Wait.waitUntilElementDisplay(KidsPage.getInstance().kids_lbl, Settings.SHORT_TIMEOUT_SECOND);
 
             case "More":
                 click(more_btn);
-                Wait.waitUntilElementDisplay(MorePage.getInstance().more_lbl, 5);
+                Wait.waitUntilElementDisplay(MorePage.getInstance().more_lbl, Settings.SHORT_TIMEOUT_SECOND);
 
             case "Account":
                 click(account_btn);
-                Wait.waitUntilElementDisplay(AccountPage.getInstance().account_lbl, 5);
+                Wait.waitUntilElementDisplay(AccountPage.getInstance().account_lbl, Settings.SHORT_TIMEOUT_SECOND);
         }
     }
 }

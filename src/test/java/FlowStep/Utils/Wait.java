@@ -2,6 +2,7 @@ package FlowStep.Utils;
 
 
 import Common.Config.DriverContext;
+import Common.Config.Settings;
 import Common.Utils.Log;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,7 +23,7 @@ public class Wait {
     }
 
     public static void waitUntilElementToBeClickable(MobileElement element){
-        new WebDriverWait(DriverContext.getDriver(), 10).until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(DriverContext.getDriver(), Settings.SHORT_TIMEOUT_SECOND).until(ExpectedConditions.elementToBeClickable(element));
     }
 
 }

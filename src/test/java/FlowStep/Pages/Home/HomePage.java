@@ -1,5 +1,6 @@
 package FlowStep.Pages.Home;
 
+import Common.Config.Settings;
 import FlowStep.Pages.BasePage;
 import FlowStep.Utils.Wait;
 import io.appium.java_client.MobileElement;
@@ -24,10 +25,12 @@ public class HomePage extends BasePage {
     }
 
     public void waitForHomePageLoadSuccess(){
-        Wait.waitUntilElementDisplay(home_lbl, 25);
+        Wait.waitUntilElementDisplay(home_lbl, Settings.LONG_TIMEOUT_SECOND);
     }
 
-    public void checkTutorial(){
+    public void checkTutorial() throws InterruptedException{
+        Thread.sleep(5000);
+        Wait.waitUntilElementDisplay(gotIt_btn, Settings.LONG_TIMEOUT_SECOND);
         Wait.waitUntilElementToBeClickable(gotIt_btn);
         click(gotIt_btn);
     }

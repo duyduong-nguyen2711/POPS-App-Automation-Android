@@ -1,7 +1,9 @@
 package FlowStep.Pages.Account;
 
 import Common.Config.DriverContext;
+import Common.Config.Settings;
 import FlowStep.Pages.BasePage;
+import FlowStep.Utils.Wait;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -53,7 +55,8 @@ public class AccountPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@index=1 and @text='Feedback']")
     public MobileElement feedback_btn;
 
-    public void clickSignin(){
-        scrollToElementContainsTextAndClick("Sign in");
+    public void clickSignIn(){
+       click(signUp_btn);
+        Wait.waitUntilElementDisplay(SignUpPage.getInstance().signUp_lbl, Settings.LONG_TIMEOUT_SECOND);
     }
 }

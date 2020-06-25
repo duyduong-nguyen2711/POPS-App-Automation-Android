@@ -1,8 +1,9 @@
 package Suite.StepDefs;
 
+import Common.Config.Settings;
 import Common.Utils.Log;
 import FlowStep.Pages.Account.AccountPage;
-import FlowStep.Pages.Account.LoginPage;
+import FlowStep.Pages.Account.SignInPage;
 import FlowStep.Pages.Account.SignUpPage;
 import FlowStep.Pages.Home.HomePage;
 import FlowStep.Pages.NavigationBar.Navigation;
@@ -21,7 +22,7 @@ public class CommonSteps {
     }
 
     @Then("^User should see tutorial and click Got It$")
-    public void confirmTutorial(){
+    public void confirmTutorial() throws InterruptedException{
         HomePage.getInstance().checkTutorial();
         Log.info("Tutorial Display and can be skipped");
     }
@@ -32,10 +33,9 @@ public class CommonSteps {
         Log.info("User navigates to " + pageName);
     }
 
-    @When("^User click Sign Up on Sign In page$")
-    public void clickSignUp(){
-        LoginPage.getInstance().clickSignUpByText();
-        Wait.waitUntilElementDisplay(SignUpPage.getInstance().signUp_lbl, 10);
-        Log.info("User navigate to Sign Up page");
+    @When("^User click back from Account Page$")
+    public void backToHomePage(){
+        AccountPage.getInstance().back_btn.click();
+        Wait.waitUntilElementDisplay(HomePage.getInstance().home_lbl, Settings.SHORT_TIMEOUT_SECOND);
     }
 }
