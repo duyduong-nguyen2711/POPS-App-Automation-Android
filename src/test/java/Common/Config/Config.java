@@ -47,6 +47,8 @@ public class Config {
         try {
             InputStream input = new FileInputStream(propPath);
             prop.load(input);
+            Settings.SHORT_TIMEOUT_SECOND = Integer.parseInt(prop.getProperty("SHORT_TIMEOUT_SECOND"));
+            Settings.LONG_TIMEOUT_SECOND = Integer.parseInt(prop.getProperty("LONG_TIMEOUT_SECOND"));
         } catch (IOException e) {
             e.printStackTrace();
         }
