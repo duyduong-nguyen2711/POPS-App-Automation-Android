@@ -6,7 +6,7 @@ import FlowStep.Data.DataContext.ScenarioContext;
 import FlowStep.Data.DataContext.TestContext;
 import FlowStep.Data.Enum.Context;
 import FlowStep.Pages.BasePage;
-import FlowStep.Utils.Email;
+import FlowStep.Utils.EmailHelper;
 import FlowStep.Utils.Wait;
 import cucumber.api.DataTable;
 import io.appium.java_client.MobileElement;
@@ -80,11 +80,12 @@ public class SignUpPage extends BasePage {
         List<String> users = dataTable.asList(String.class);
         String fullName = users.get(0);
         scenarioContext.setContext(Context.FULL_NAME, fullName);
-        String email = Email.generateEmail(users.get(1));
-        scenarioContext.setContext(Context.EMAIL, email);
+        String email = EmailHelper.generateEmail(users.get(1));
+        scenarioContext.setContext(Context.EMAIl, email);
         String password = users.get(2);
         scenarioContext.setContext(Context.PASSWORD, password);
         register(fullName, email, password);
+        Wait.waitUntilElementDisplay(ActivePage.getInstance().activeAccount_lbl, Settings.SHORT_TIMEOUT_SECOND);
     }
 
 }

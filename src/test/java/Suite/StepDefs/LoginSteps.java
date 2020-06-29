@@ -5,6 +5,7 @@ import Common.Utils.Log;
 import FlowStep.Data.DataContext.ScenarioContext;
 import FlowStep.Data.DataContext.TestContext;
 import FlowStep.Pages.Account.AccountPage;
+import FlowStep.Pages.Account.ActivePage;
 import FlowStep.Pages.Account.SignInPage;
 import FlowStep.Pages.Account.SignUpPage;
 import FlowStep.Utils.Wait;
@@ -14,12 +15,15 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 
 public class LoginSteps {
 
     SignInPage signInPage = SignInPage.getInstance();
     SignUpPage signUpPage = SignUpPage.getInstance();
     AccountPage accountPage = AccountPage.getInstance();
+    ActivePage activePage = ActivePage.getInstance();
     //ScenarioContext scenarioContext = TestContext.getScenarioContext();
 
     @When("^User login successful$")
@@ -56,5 +60,23 @@ public class LoginSteps {
     @Then("^Register button should be disabled to click$")
     public void checkRegisterButton(){
         Assert.assertFalse(signUpPage.checkRegisterStatus(), "Register button is able to be clicked without correct info");
+    }
+
+    @When("^User confirm pops up in active page$")
+    public void confirmActivePopUps(){
+        activePage.confirmActivatePopUps();
+        Log.info("User confirm active pop ups");
+    }
+
+    @And("^User activate account successful$")
+    public void activateAccount() throws IOException {
+        activePage.activeAccount();
+        Log.info("User activate account successful");
+    }
+
+    @And("^User click activate later$")
+    public void activateAccountLater(){
+        activePage.activeLater();
+        Log.info("User skip activate account");
     }
 }
