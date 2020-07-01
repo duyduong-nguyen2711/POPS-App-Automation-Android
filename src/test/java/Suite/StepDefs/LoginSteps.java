@@ -2,14 +2,12 @@ package Suite.StepDefs;
 
 import Common.Config.Settings;
 import Common.Utils.Log;
-import FlowStep.Data.DataContext.ScenarioContext;
-import FlowStep.Data.DataContext.TestContext;
 import FlowStep.Pages.Account.AccountPage;
 import FlowStep.Pages.Account.ActivePage;
 import FlowStep.Pages.Account.SignInPage;
 import FlowStep.Pages.Account.SignUpPage;
 import FlowStep.Utils.Wait;
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

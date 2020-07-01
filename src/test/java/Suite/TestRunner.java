@@ -1,38 +1,20 @@
 package Suite;
 
-import cucumber.api.CucumberOptions;
+import com.vimalselvam.cucumber.listener.Reporter;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
+import cucumber.api.CucumberOptions;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 @CucumberOptions(
         features = "src/test/resources/Features/Android",
         glue = {"Suite.StepDefs"},
-        format = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"},
-        plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/FlowStep.html"}
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber-report.html"}
 )
-public class TestRunner {
-    private TestNGCucumberRunner testNGCucumberRunner;
-
-    @BeforeClass(alwaysRun = true)
-    public void setUpClass() {
-        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-    }
-
-    @Test(description = "Mobile Automation", dataProvider = "features")
-    public void flowSteps(CucumberFeatureWrapper cFeature) {
-        testNGCucumberRunner.runCucumber(cFeature.getCucumberFeature());
-    }
-
-    @DataProvider
-    public Object[][] features() {
-        return testNGCucumberRunner.provideFeatures();
-    }
-
-}
+public class TestRunner extends AbstractTestNGCucumberTests { }

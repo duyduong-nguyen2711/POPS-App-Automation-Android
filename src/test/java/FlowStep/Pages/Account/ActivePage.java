@@ -52,8 +52,8 @@ public class ActivePage extends BasePage {
     }
 
     public void getActivateCodeFromEmail() throws IOException {
-        List<Mail> list = emailUtils.getIncomingMailList(scenarioContext.getContext(Context.EMAIl).toString());
-        emailUtils.getLastMailContent(scenarioContext.getContext(Context.EMAIl).toString());
+        List<Mail> list = emailUtils.getIncomingMailList(scenarioContext.getContext(Context.EMAIL).toString());
+        emailUtils.getLastMailContent(scenarioContext.getContext(Context.EMAIL).toString());
     }
 
     public void activeAccount() throws IOException {

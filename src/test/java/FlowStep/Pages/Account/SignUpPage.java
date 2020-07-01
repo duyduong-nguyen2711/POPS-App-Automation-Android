@@ -8,7 +8,7 @@ import FlowStep.Data.Enum.Context;
 import FlowStep.Pages.BasePage;
 import FlowStep.Utils.EmailHelper;
 import FlowStep.Utils.Wait;
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.testng.Assert;
@@ -81,7 +81,7 @@ public class SignUpPage extends BasePage {
         String fullName = users.get(0);
         scenarioContext.setContext(Context.FULL_NAME, fullName);
         String email = EmailHelper.generateEmail(users.get(1));
-        scenarioContext.setContext(Context.EMAIl, email);
+        scenarioContext.setContext(Context.EMAIL, email);
         String password = users.get(2);
         scenarioContext.setContext(Context.PASSWORD, password);
         register(fullName, email, password);

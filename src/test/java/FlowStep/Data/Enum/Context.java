@@ -4,9 +4,4 @@ public enum  Context {
     EMAIL,
     PASSWORD,
     FULL_NAME
-
-    FULL_NAME,
-    EMAIl,
-    PASSWORD;
-
 }
