@@ -6,13 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 public class DriverContext {
 
     public static AndroidDriver<MobileElement> getDriver() {
-        return driver;
+       return threadLocal.get();
     }
 
     public static void setDriver(AndroidDriver<MobileElement> driver) {
-        DriverContext.driver = driver;
+        threadLocal.set(driver);
     }
 
-    private static AndroidDriver<MobileElement> driver;
+    protected static ThreadLocal<AndroidDriver<MobileElement>> threadLocal = new ThreadLocal<>();
 
 }

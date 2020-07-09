@@ -22,7 +22,6 @@ public class LoginSteps {
     SignUpPage signUpPage = SignUpPage.getInstance();
     AccountPage accountPage = AccountPage.getInstance();
     ActivePage activePage = ActivePage.getInstance();
-    //ScenarioContext scenarioContext = TestContext.getScenarioContext();
 
     @When("^User login successful$")
     public void loginSuccessful(){
