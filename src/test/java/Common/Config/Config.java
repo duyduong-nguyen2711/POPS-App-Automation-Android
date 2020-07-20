@@ -15,25 +15,35 @@ public class Config {
 
     private static final String CONFIG = "Config.properties";
     private static final ThreadLocal<Properties> propTL = new ThreadLocal<>();
-    private static Properties prop = new Properties();
+    private static Properties props = new Properties();
 
-    public static void loadEnvInfo() {
-        try {
-            File configFile = new File(CONFIG);
-            InputStream stream = new FileInputStream(configFile);
-            prop.load(stream);
-            Settings.SHORT_TIMEOUT_SECOND = Integer.parseInt(getProp("SHORT_TIMEOUT_SECOND"));
-            Settings.LONG_TIMEOUT_SECOND = Integer.parseInt(getProp("LONG_TIMEOUT_SECOND"));
-        } catch (Throwable ex) {
-            Log.error(ex.getMessage());
+    public Properties getConfig() throws IOException {
+        FileInputStream stream = new FileInputStream(CONFIG);
+        if (props.isEmpty()){
+            try {
+                props.load(stream);
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw e;
+//            } finally {
+//                if (stream != null){
+//                    stream.close();
+//                }
+            }
         }
+        return props;
     }
 
     public static String getProp(String propKey) {
         if (propTL.get() == null) {
-            propTL.set(prop);
+            propTL.set(props);
         }
         return propTL.get().getProperty(propKey);
+    }
+
+    public static void getTimeOut(){
+        Settings.SHORT_TIMEOUT_SECOND = Integer.parseInt(getProp("SHORT_TIMEOUT_SECOND"));
+        Settings.LONG_TIMEOUT_SECOND = Integer.parseInt(getProp("LONG_TIMEOUT_SECOND"));
     }
 
 }

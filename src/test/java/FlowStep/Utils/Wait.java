@@ -23,7 +23,7 @@ public class Wait {
     }
 
     public static void waitUntilElementToBeClickable(MobileElement element){
-        new WebDriverWait(DriverContext.getDriver(), Settings.SHORT_TIMEOUT_SECOND).until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(new DriverContext().getDriver(), Settings.SHORT_TIMEOUT_SECOND).until(ExpectedConditions.elementToBeClickable(element));
     }
 
 }

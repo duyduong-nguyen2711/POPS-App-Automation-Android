@@ -1,7 +1,6 @@
 package FlowStep.Pages;
 
 import Common.Config.DriverContext;
-import Common.Utils.Log;
 import FlowStep.Utils.Wait;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -14,7 +13,7 @@ public class BasePage {
 
     protected AndroidDriver<MobileElement> driver;
     public BasePage() {
-        driver = DriverContext.getDriver();
+        driver = new DriverContext().getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
@@ -41,7 +40,7 @@ public class BasePage {
     }
 
     public void scrollToElementContainsTextAndClick(int xOffset, int yOffset) {
-        TouchAction t = new TouchAction(DriverContext.getDriver());
+        TouchAction t = new TouchAction(new DriverContext().getDriver());
         t.tap(PointOption.point(xOffset, yOffset)).perform();
     }
 

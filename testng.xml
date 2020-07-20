@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BDD Test Suite" parallel="tests" thread-count="2">
-
-    <test name="node 1">
+<suite name="Suite" parallel="tests">
+    <test name="Simulate 1">
         <parameter name="deviceName" value="emulator-5554" />
-        <parameter name="platformVersion" value="10" />
+        <parameter name="udid" value="emulator-5554" />
+        <parameter name="systemPort" value="10000" />
+        <parameter name="chromeDriverPort" value="11000" />
         <classes>
             <class name="Suite.TestRunner" />
         </classes>
     </test>
 
-    <test name="node 2">
+    <test name="Simulate 2">
         <parameter name="deviceName" value="emulator-5556" />
-        <parameter name="platformVersion" value="10" />
+        <parameter name="udid" value="emulator-5556" />
+        <parameter name="systemPort" value="10001" />
+        <parameter name="chromeDriverPort" value="11001" />
         <classes>
             <class name="Suite.TestRunner" />
         </classes>
     </test>
+
+<!--    <test name="Nokia 7 plus">-->
+<!--        <parameter name="deviceName" value="Nokia 7 plus" />-->
+<!--        <parameter name="udid" value="B2NGAA8872103667" />-->
+<!--        <parameter name="platformVersion" value="9" />-->
+<!--        <parameter name="url" value="127.0.0.2:5000/wd/hub" />-->
+<!--        <classes>-->
+<!--            <class name="Suite.TestRunner" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="OPPO A5s">-->
+<!--        <parameter name="deviceName" value="OPPO A5s" />-->
+<!--        <parameter name="udid" value="S4EY55U8V8T8ZD7S" />-->
+<!--        <parameter name="platformVersion" value="8.1.0" />-->
+<!--        <parameter name="url" value="127.0.0.1:5001/wd/hub" />-->
+<!--        <classes>-->
+<!--            <class name="Suite.DemoTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

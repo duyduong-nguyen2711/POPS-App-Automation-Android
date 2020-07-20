@@ -1,7 +1,11 @@
 package Suite.StepDefs;
 
+import Common.Config.DriverContext;
 import Common.Config.Settings;
 import Common.Utils.Log;
+import FlowStep.Data.DataContext.ScenarioContext;
+import FlowStep.Data.DataContext.TestContext;
+import FlowStep.Data.Enum.Context;
 import FlowStep.Pages.Account.AccountPage;
 import FlowStep.Pages.Account.SignInPage;
 import FlowStep.Pages.Account.SignUpPage;
@@ -11,12 +15,15 @@ import FlowStep.Utils.Wait;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 public class CommonSteps {
 
     @Given("^User is at Home Page$")
     public void stayAtHomePage(){
+        HomePage.getInstance().waitForHomePageLoadSuccess();
         Assert.assertTrue(HomePage.getInstance().isHomePageDisplayed(), "User is not at Home Page");
         Log.info("User is at Home page");
     }
@@ -38,4 +45,5 @@ public class CommonSteps {
         AccountPage.getInstance().back_btn.click();
         Wait.waitUntilElementDisplay(HomePage.getInstance().home_lbl, Settings.SHORT_TIMEOUT_SECOND);
     }
+
 }
